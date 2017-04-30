@@ -139,8 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="array_left_rotate.cpp" />
-    <ClCompile Include="is_bst.cpp" />
+    <ClCompile Include="standalone_funcs.cpp" />
+    <ClCompile Include="bst.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bst.h" />
+    <ClInclude Include="standalone_funcs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

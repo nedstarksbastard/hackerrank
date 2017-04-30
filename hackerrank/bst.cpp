@@ -1,31 +1,14 @@
-#include <iostream>
-#include <iomanip>
+#include "bst.h"
 
-using namespace std;
+//Binary Tree constructor
+BinarySearchTree::BinarySearchTree() {
+	root = NULL; //intialize the default construction, set the root to NULL
+}
 
-struct Node {
-	int data;
-	Node* left;
-	Node* right;
-};
-
-//Binary Tree class
-class BinarySearchTree {
-	Node* root; //creating the root of the binary tree
-
-public:
-	BinarySearchTree() {
-		root = NULL; //intialize the default construction, set the root to NULL
-	}
-
-	BinarySearchTree(int data) {
-		this->insert(data);
-	}
-
-	void insert(int item);
-	void printTree(Node* n, int indent) const;
-	friend ostream& operator<<(ostream& os, const BinarySearchTree& b);
-};
+BinarySearchTree::BinarySearchTree(int data) {
+	root = NULL;
+	this->insert(data);
+}
 
 void BinarySearchTree::insert(int data)
 {
@@ -34,11 +17,11 @@ void BinarySearchTree::insert(int data)
 	p->left = NULL;
 	p->right = NULL;
 
-	if (!root) {
+	if (this->root==NULL) {
 		root = p;
 	}
 	else {
-		Node *insertIter = root;
+		Node *insertIter = this->root;
 		Node *parent = NULL;
 		// iterate over the tree until we find the node for insertion
 		while (insertIter) {
@@ -70,18 +53,34 @@ void BinarySearchTree::printTree(Node * n, int indent) const
 		printTree(n->right, indent + 4);
 	}
 
+	return;
 }
 
-bool checkBst(Node * root)
+bool checkBST(Node * root)
 {
-	return false;
+	static struct Node *prev = NULL;
+	// traverse the tree in inorder fashion and keep track of prev node
+	if (root)
+	{
+		if (!checkBST(root->left))
+			return false;
+
+		// Allows only distinct valued nodes 
+		if (prev != NULL && root->data <= prev->data)
+			return false;
+
+		prev = root;
+
+		return checkBST(root->right);
+	}
+
+	return true;
 }
 
-int main() {
-	BinarySearchTree *B = new BinarySearchTree();
-}
+
 
 ostream & operator<<(ostream & os, const BinarySearchTree & b)
 {
 	b.printTree(b.root, 4);
+	return cout << "" << endl;
 }

@@ -15,11 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="array_left_rotate.cpp">
+    <ClCompile Include="bst.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="is_bst.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="standalone_funcs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bst.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="standalone_funcs.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
