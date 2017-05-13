@@ -21,7 +21,7 @@ public:
 	BinarySearchTree(int data); 
 
 	void insert(int item);
-	void printTree(Node* n, int indent) const;
+	ostream& printTree(ostream & os, Node* n, int indent) const;
 	friend ostream& operator<<(ostream& os, const BinarySearchTree& b);
 };
 

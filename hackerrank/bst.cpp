@@ -41,19 +41,19 @@ void BinarySearchTree::insert(int data)
 	}
 }
 
-void BinarySearchTree::printTree(Node * n, int indent) const
+ostream& BinarySearchTree::printTree(ostream & os, Node * n, int indent) const
 {
 	
 	if (n != nullptr)
 	{
-		printTree(n->left, indent + 4);
+		printTree(os, n->left, indent + 4);
 		if (indent > 0)
-			cout << setw(indent) << " ";
-		cout << n->data << endl;
-		printTree(n->right, indent + 4);
+			os << setw(indent) << " ";
+		os << n->data << endl;
+		printTree(os, n->right, indent + 4);
 	}
 
-	return;
+	return os;
 }
 
 bool checkBST(Node * root)
@@ -81,6 +81,5 @@ bool checkBST(Node * root)
 
 ostream & operator<<(ostream & os, const BinarySearchTree & b)
 {
-	b.printTree(b.root, 4);
-	return cout << "" << endl;
+	return b.printTree(os, b.root, 4);
 }
